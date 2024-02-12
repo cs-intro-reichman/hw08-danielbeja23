@@ -154,7 +154,14 @@ class PlayList {
      * is negative or too big for this list, does nothing.
      */
     public void remove(String title) {
-        //// replace this comment with your code
+        for (int j = 0; j < size; j++) {
+            if (title.equals(this.tracks[j].getTitle())) {
+                remove(j);
+                return;
+            }
+
+        }
+
     }
 
     /**
