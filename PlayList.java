@@ -82,7 +82,7 @@ class PlayList {
      * If such a track is not found, returns -1.
      */
     public int indexOf(String title) {
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < this.getSize(); i++) {
             if (title.equals(this.tracks[i].getTitle())) {
                 return i;
             }
@@ -110,7 +110,7 @@ class PlayList {
                 return true;
             }
             Track[] tempList = this.tracks; // new temp Playlist which help to orgnaize the list with the new track.
-            for (int j = 0; j < size + 1; j++) {
+            for (int j = 0; j < this.getSize() + 1; j++) {
                 tempList[j] = this.tracks[j];
                 if (i == j) {
                     tempList[j] = track;
@@ -138,7 +138,7 @@ class PlayList {
             return;
         }
         Track[] tempT = this.tracks;
-        for (int j = 0; j < size - 1; j++) {
+        for (int j = 0; j < this.getSize() - 1; j++) {
             tempT[j] = this.tracks[j];
             if (i <= j) {
                 tempT[j] = this.tracks[j + 1];
@@ -154,7 +154,7 @@ class PlayList {
      * is negative or too big for this list, does nothing.
      */
     public void remove(String title) {
-        for (int j = 0; j < size; j++) {
+        for (int j = 0; j < this.getSize(); j++) {
             if (title.equals(this.tracks[j].getTitle())) {
                 remove(j);
                 return;
@@ -168,7 +168,7 @@ class PlayList {
      * Removes the first track from this list. If the list is empty, does nothing.
      */
     public void removeFirst() {
-        //// replace this comment with your code
+        remove(0);
     }
 
     /**
@@ -177,7 +177,13 @@ class PlayList {
      */
     //// An elegant and terribly inefficient implementation.
     public void add(PlayList other) {
-        //// replace this comment with your code
+        if ((other.getSize() + this.getSize()) > this.getMaxSize()) {
+            return;
+        }
+        for (int j = 0; j < other.getSize(); j++) {
+            add(other.getTrack(j));
+        }
+
     }
 
     /**
