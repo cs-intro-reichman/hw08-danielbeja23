@@ -134,7 +134,18 @@ class PlayList {
      * does nothing and returns -1.
      */
     public void remove(int i) {
-        //// replace this comment with your code
+        if (i < 0 || i >= this.getSize() || this.getSize() == 0) {
+            return;
+        }
+        Track[] tempT = this.tracks;
+        for (int j = 0; j < size - 1; j++) {
+            tempT[j] = this.tracks[j];
+            if (i <= j) {
+                tempT[j] = this.tracks[j + 1];
+            }
+        }
+        size--;
+
     }
 
     /**
