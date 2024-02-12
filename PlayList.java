@@ -100,8 +100,31 @@ class PlayList {
      * returns true.
      */
     public boolean add(int i, Track track) {
-        //// replace the following statement with your code
-        return false;
+        if (i < 0 || i > this.getSize() || this.getMaxSize() == this.getSize()) { // if i is negative or greater than
+                                                                                  // size of the list or list is full
+                                                                                  // return false.
+            return false;
+        } else {
+            if (i == this.getSize()) { // add at the end of the list.
+                add(track);
+                return true;
+            }
+            Track[] tempList = this.tracks; // new temp Playlist which help to orgnaize the list with the new track.
+            for (int j = 0; j < size + 1; j++) {
+                tempList[j] = this.tracks[j];
+                if (i == j) {
+                    tempList[j] = track;
+                }
+                if (i < j) {
+                    tempList[j] = this.tracks[j - 1];
+
+                }
+
+            }
+            size++;
+            return true;
+
+        }
     }
 
     /**
