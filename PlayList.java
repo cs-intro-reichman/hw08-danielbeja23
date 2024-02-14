@@ -57,7 +57,7 @@ class PlayList {
         for (int i = 0; i < this.size; i++) {
             dataStr = dataStr + "\r\n" + this.tracks[i].toString();
         }
-        System.out.println(dataStr);
+
         return dataStr;
     }
 
@@ -250,10 +250,12 @@ class PlayList {
     public void sortedInPlace() {
         // Uses the selection sort algorithm,
         // calling the minIndex method in each iteration.
-        Track temp;
-        for (int j = 0; j < this.getSize() - 1; j++) {
-            temp = this.tracks[j];
-            this.tracks[j] = this.tracks[minIndex(j)];
+
+        for (int j = 0; j < this.getSize(); j++) {
+            int min = minIndex(j);
+            Track temp = this.tracks[j];
+            this.tracks[j] = this.tracks[min];
+            this.tracks[min] = temp;
         }
     }
 }
