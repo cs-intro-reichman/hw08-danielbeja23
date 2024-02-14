@@ -40,7 +40,7 @@ class PlayList {
      */
     public boolean add(Track track) {
         if (this.getSize() < getMaxSize()) {
-            this.tracks[this.getSize()] = track;
+            this.tracks[size] = track;
             size++;
             return true;
         }
@@ -139,15 +139,18 @@ class PlayList {
                 add(track);
                 return true;
             } else {
-                Track[] tempList = this.tracks; // new temp Playlist which help to orgnaize the list with the new track.
+                Track[] temp = new Track[size];
+                for (int j = 0; j < this.getSize(); j++) {
+                    temp[j] = this.tracks[j];
+                }
                 for (int j = 0; j < this.getSize() + 1; j++) {
-                    tempList[j] = this.tracks[j];
                     if (i == j) {
-                        tempList[j] = track;
-                    }
-                    if (i < j) {
-                        tempList[j] = this.tracks[j - 1];
+                        this.tracks[j] = track;
+                    } else {
+                        if (i < j) {
+                            this.tracks[j] = temp[j - 1];
 
+                        }
                     }
 
                 }
@@ -206,7 +209,7 @@ class PlayList {
     public void add(PlayList other) {
         if ((other.getSize() + this.getSize()) <= this.getMaxSize()) {
             for (int j = 0; j < other.getSize(); j++) {
-                add(other.getTrack(j));
+                this.add(other.getTrack(j));
             }
         }
 
