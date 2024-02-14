@@ -83,11 +83,12 @@ class PlayList {
     private String lowCase(String title) {
         String lowcase = "";
         for (int i = 0; i < title.length(); i++) {
-            if (title.charAt(i) >= 65 || title.charAt(i) <= 90) {
-                lowcase = lowcase + (title.charAt(i) + 32);
-            }
-            lowcase = lowcase + title.charAt(i);
+            if (title.charAt(i) >= 65 && title.charAt(i) <= 90) {
+                lowcase = lowcase + (char) (title.charAt(i) + 32);
+            } else
+                lowcase = lowcase + title.charAt(i);
         }
+        System.out.println(lowcase);
         return lowcase;
     }
 
