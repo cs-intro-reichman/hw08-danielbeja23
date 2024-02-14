@@ -80,11 +80,23 @@ class PlayList {
         return sum;
     }
 
+    private String lowCase(String title) {
+        String lowcase = "";
+        for (int i = 0; i < title.length(); i++) {
+            if (title.charAt(i) >= 65 || title.charAt(i) <= 90) {
+                lowcase = lowcase + (title.charAt(i) + 32);
+            }
+            lowcase = lowcase + title.charAt(i);
+        }
+        return lowcase;
+    }
+
     /**
      * Returns the index of the track with the given title in this list.
      * If such a track is not found, returns -1.
      */
     public int indexOf(String title) {
+        title = lowCase(title);
         for (int i = 0; i < this.getSize(); i++) {
             if (title.equals(this.tracks[i].getTitle())) {
                 return i;
