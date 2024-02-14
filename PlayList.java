@@ -189,14 +189,7 @@ class PlayList {
      * is negative or too big for this list, does nothing.
      */
     public void remove(String title) {
-        for (int j = 0; j < this.getSize(); j++) {
-            if (title.equals(this.tracks[j].getTitle())) {
-                remove(j);
-                return;
-            }
-
-        }
-
+        remove(indexOf(title));
     }
 
     /**
@@ -212,11 +205,10 @@ class PlayList {
      */
     //// An elegant and terribly inefficient implementation.
     public void add(PlayList other) {
-        if ((other.getSize() + this.getSize()) > this.getMaxSize()) {
-            return;
-        }
-        for (int j = 0; j < other.getSize(); j++) {
-            add(other.getTrack(j));
+        if ((other.getSize() + this.getSize()) <= this.getMaxSize()) {
+            for (int j = 0; j < other.getSize(); j++) {
+                add(other.getTrack(j));
+            }
         }
 
     }
