@@ -169,15 +169,17 @@ class PlayList {
     public void remove(int i) {
         if (i < 0 || i >= this.getSize() || this.getSize() == 0) {
             return;
-        }
-        Track[] tempT = this.tracks;
-        for (int j = 0; j < this.getSize() - 1; j++) {
-            tempT[j] = this.tracks[j];
-            if (i <= j) {
-                tempT[j] = this.tracks[j + 1];
+        } else {
+            Track[] tempT = this.tracks;
+            for (int j = 0; j < this.getSize() - 1; j++) {
+                tempT[j] = this.tracks[j];
+                if (i <= j) {
+                    tempT[j] = this.tracks[j + 1];
+                }
             }
+            size--;
+
         }
-        size--;
 
     }
 
