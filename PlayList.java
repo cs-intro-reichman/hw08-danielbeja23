@@ -139,21 +139,23 @@ class PlayList {
             if (i == this.getSize()) { // add at the end of the list.
                 add(track);
                 return true;
-            }
-            Track[] tempList = this.tracks; // new temp Playlist which help to orgnaize the list with the new track.
-            for (int j = 0; j < this.getSize() + 1; j++) {
-                tempList[j] = this.tracks[j];
-                if (i == j) {
-                    tempList[j] = track;
-                }
-                if (i < j) {
-                    tempList[j] = this.tracks[j - 1];
+            } else {
+                Track[] tempList = this.tracks; // new temp Playlist which help to orgnaize the list with the new track.
+                for (int j = 0; j < this.getSize() + 1; j++) {
+                    tempList[j] = this.tracks[j];
+                    if (i == j) {
+                        tempList[j] = track;
+                    }
+                    if (i < j) {
+                        tempList[j] = this.tracks[j - 1];
+
+                    }
 
                 }
+                size++;
+                return true;
 
             }
-            size++;
-            return true;
 
         }
     }
