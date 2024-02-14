@@ -112,7 +112,6 @@ class PlayList {
      * If such a track is not found, returns -1.
      */
     public int indexOf(String title) {
-        title = correctTitle(title);
         for (int i = 0; i < this.getSize(); i++) {
             if (title.equals(this.tracks[i].getTitle())) {
                 return i;
