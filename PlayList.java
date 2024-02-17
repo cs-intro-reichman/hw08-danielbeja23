@@ -112,6 +112,7 @@ class PlayList {
      * If such a track is not found, returns -1.
      */
     public int indexOf(String title) {
+        // #feedback - you should ignore the upper/lower case here (for example by calling your correctTitle method).
         for (int i = 0; i < this.getSize(); i++) {
             if (title.equals(this.tracks[i].getTitle())) {
                 return i;
@@ -139,6 +140,7 @@ class PlayList {
                 add(track);
                 return true;
             } else {
+                // #feedback - you can do everything in-place and avoid having another array (= more memory).
                 Track[] temp = new Track[size];
                 for (int j = 0; j < this.getSize(); j++) {
                     temp[j] = this.tracks[j];
@@ -172,6 +174,7 @@ class PlayList {
         if (i < 0 || i >= this.getSize() || this.getSize() == 0) {
             return;
         } else {
+            // #feedback - same here, no need to create a temp array.
             Track[] tempT = this.tracks;
             for (int j = 0; j < this.getSize() - 1; j++) {
                 tempT[j] = this.tracks[j];
